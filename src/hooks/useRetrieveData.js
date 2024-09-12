@@ -1,3 +1,8 @@
+/* This file defines a React hook, useRetrieveData, which fetches data for movies, series, or popular depending on the type passed
+into it. Based off the type, it selects a corresponding configuration array from the dataConfig file and dispatches the thunk
+function It uses Redux to dispatch thunks that fetch data from specified URLs and processes the data into an array of objects.
+The retrieved data is stored in local state and returned by the hook for use in other components. */
+
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux" //Redux is a state management for javascript applications. It provides a global store where you keep the application state
 import { fetchMovieDataConfig, fetchPopularDataConfig, fetchSeriesDataConfig } from "../dataConfig";
