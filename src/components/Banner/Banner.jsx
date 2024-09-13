@@ -45,13 +45,16 @@ const Banner = ({ type }) => {
 	const description = truncate(finalData?.overview, 150);
 	const dispatch = useDispatch();
 
-  // A handler function for clicking the play button.
+  // A handler function for clicking the play button, which plays an animation.
   // This calls the stopPropagation() method to prevent the click event from propagating up the node tree.
   // There is no logic for playing videos since FakeFlix is not intended to do so.
 	const handlePlayAnimation = event => {
 		event.stopPropagation();
 	};
 
+  // A handler function for clicking the "More info" button, which displays a modal.
+  // This makes a dispatch call to set the modal data in redux, which triggers an update in DetailModal.
+  // The data sent is of the highlighted content being displayed.
 	const handleModalOpening = () => {
 		dispatch(showModalDetail({ ...finalData, fallbackTitle }));
 	}
