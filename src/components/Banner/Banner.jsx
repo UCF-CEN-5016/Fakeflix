@@ -45,6 +45,9 @@ const Banner = ({ type }) => {
 	const description = truncate(finalData?.overview, 150);
 	const dispatch = useDispatch();
 
+  // A handler function for clicking the play button.
+  // This calls the stopPropagation() method to prevent the click event from propagating up the node tree.
+  // There is no logic for playing videos since FakeFlix is not intended to do so.
 	const handlePlayAnimation = event => {
 		event.stopPropagation();
 	};
