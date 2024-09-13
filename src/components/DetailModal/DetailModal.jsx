@@ -1,3 +1,8 @@
+/*
+	This component (Detail Modal) serves as a card that displays information related to a selected movie or show, including information
+	such as a show overview, title, release data, genre, and more. The functions for the component are declared and the entire card/modal is
+	returned.
+*/
 import './detailModal.scss'
 import { useRef } from 'react';
 import { Link } from "react-router-dom";
@@ -25,19 +30,24 @@ const DetailModal = () => {
 	const reducedDate = release_date ? dateToYearOnly(release_date) : first_air_date ? dateToYearOnly(first_air_date) : "Not Available";
 	const modalRef = useRef();
 
-	const handleAdd = (event) => {
+	// This section primarily refers to major functions that occur on a button click or action related to the detail modal.
+
+	const handleAdd = (event) => {	// HandleAdd is called when the user selects to favorite a show or movie. 
 		event.stopPropagation();
-		dispatch(addToFavourites({ ...modalContent, isFavourite }));
+		dispatch(addToFavourites({ ...modalContent, isFavourite }));	// Calls a function from favourites.actions which adds the selected item to a favorites list.
 	}
-	const handleRemove = (event) => {
+
+	const handleRemove = (event) => {	// HandleRemove is called when the user selects to unfavorite a show or movie. 
 		event.stopPropagation();
-		dispatch(removeFromFavourites({ ...modalContent, isFavourite }));
-		if (!modalClosed) handleModalClose();
+		dispatch(removeFromFavourites({ ...modalContent, isFavourite }));	// Calls a function from favourites.actions which removes the selected item from the favorites list.
+		if (!modalClosed) handleModalClose();	// Closes the modal afterwards (if it was not already closed.)
 	}
+
 	const handlePlayAnimation = event => {
 		event.stopPropagation();
 		handleModalClose();
 	};
+
 	useOutsideClick(modalRef, () => {
 		if (!modalClosed) handleModalClose();
 	});
