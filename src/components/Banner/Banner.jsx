@@ -13,6 +13,17 @@ import { showModalDetail } from "../../redux/modal/modal.actions";
 import { selectTrendingMovies, selectNetflixMovies } from "../../redux/movies/movies.selectors";
 import { selectNetflixSeries } from "../../redux/series/series.selectors";
 
+/**
+ * A Banner component that displays a highlighted content on a page. This is the large preview of a movie or tv show displayed at the top of the home page, for example.
+ * 
+ * @component
+ * @param {Object} props - The component accepts a single prop: type
+ * @param {string} props.type - The type of highlighted content to use. The value can be "movies" or "series" to indicate trending movies and netflix series, respectively. Any other value will default to netflix movies.
+ * @returns {JSX.Element} The rendered Banner component
+ * 
+ * @example
+ * <Banner type='movies' />
+ */
 const Banner = ({ type }) => {
 	let selector;
 	switch (type) {
