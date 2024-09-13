@@ -1,3 +1,7 @@
+// Banner.jsx
+// This file contains the implementation of the Banner component. See the documentation of this
+// component below for more information.
+
 import "./banner.scss";
 import React from "react";
 import { motion } from "framer-motion";
@@ -14,7 +18,9 @@ import { selectTrendingMovies, selectNetflixMovies } from "../../redux/movies/mo
 import { selectNetflixSeries } from "../../redux/series/series.selectors";
 
 /**
- * A Banner component that displays a highlighted content on a page. This is the large preview of a movie or tv show displayed at the top of the home page, for example.
+ * A Banner component that displays a highlighted content on a page. 
+ * This is the large preview of a movie or tv show displayed at the top of the home page, for example.
+ * The background is an image from the show. The foreground contains the title, a play button, a more info button, and a short description.
  * 
  * @component
  * @param {Object} props - The component accepts a single prop: type
