@@ -20,17 +20,20 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 
 const DetailModal = () => {
 
+	// Section for redux functions/setup.
 	const dispatch = useDispatch();
-	const modalClosed = useSelector(selectModalState);
-	const modalContent = useSelector(selectModalContent);
-	const handleModalClose = () => dispatch(hideModalDetail());
+	const modalClosed = useSelector(selectModalState);	// Determines if the modal is open or not.
+	const modalContent = useSelector(selectModalContent);	// Contains the content within the modal (genres/overview/dates/etc).
+
+	const handleModalClose = () => dispatch(hideModalDetail());	// Function referencing another file's function which closes/hides the modal.
+
 	const { overview, fallbackTitle, backdrop_path, release_date, first_air_date, vote_average, original_language, adult, genresConverted, isFavourite } = modalContent;
 	const joinedGenres = genresConverted ? genresConverted.join(', ') : "Not available";
 	const maturityRating = adult === undefined ? "Not available" : adult ? "Suitable for adults only" : "Suitable for all ages";
 	const reducedDate = release_date ? dateToYearOnly(release_date) : first_air_date ? dateToYearOnly(first_air_date) : "Not Available";
 	const modalRef = useRef();
 
-	// This section primarily refers to major functions that occur on a button click or action related to the detail modal.
+	// Section which primarily refers to major functions that occur on a button click or action related to the detail modal.
 
 	const handleAdd = (event) => {	// HandleAdd is called when the user selects to favorite a show or movie. 
 		event.stopPropagation();
@@ -47,8 +50,8 @@ const DetailModal = () => {
 		event.stopPropagation();
 		handleModalClose();
 	};
-
-	useOutsideClick(modalRef, () => {
+	
+	useOutsideClick(modalRef, () => {	// Uses a custom hook within the program that closes the modal when clicked outside the bounds.	
 		if (!modalClosed) handleModalClose();
 	});
 
