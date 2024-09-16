@@ -11,12 +11,46 @@ import "firebase/compat/auth"
 
 // Destructure environment variables for Firebase configuration
 const { 
-    REACT_APP_FIREBASE_API_KEY, 
-    REACT_APP_FIREBASE_AUTH_DOMAIN, 
-    REACT_APP_FIREBASE_PROJECT_ID, 
-    REACT_APP_FIREBASE_STORAGE_BUCKET, 
-    REACT_APP_FIREBASE_MESSAGING_SENDER_ID, 
-    REACT_APP_FIREBASE_APP_ID, 
+    /**
+     * @description The API key for your Firebase project. This is required for authenticating requests to Firebase services.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_API_KEY,
+
+    /**
+     * @description The authentication domain for your Firebase project. This is used for authentication operations.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_AUTH_DOMAIN,
+
+    /**
+     * @description The ID of your Firebase project. This is a unique identifier for your project.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_PROJECT_ID,
+
+    /**
+     * @description The storage bucket for your Firebase project. This is used for Firebase Storage operations.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_STORAGE_BUCKET,
+
+    /**
+     * @description The messaging sender ID for your Firebase project. This is used for Firebase Cloud Messaging.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+
+    /**
+     * @description The application ID for your Firebase project. This is a unique identifier for your app within the project.
+     * @type {string}
+     */
+    REACT_APP_FIREBASE_APP_ID,
+
+    /**
+     * @description The measurement ID for Google Analytics in your Firebase project. This is used for analytics operations.
+     * @type {string}
+     */
     REACT_APP_FIREBASE_MEASUREMEMT_ID 
 } = process.env;
 
