@@ -1,3 +1,7 @@
+// Banner.jsx
+// This file contains the implementation of the Banner component. See the documentation of this
+// component below for more information.
+
 import "./banner.scss";
 import React from "react";
 import { motion } from "framer-motion";
@@ -13,6 +17,19 @@ import { showModalDetail } from "../../redux/modal/modal.actions";
 import { selectTrendingMovies, selectNetflixMovies } from "../../redux/movies/movies.selectors";
 import { selectNetflixSeries } from "../../redux/series/series.selectors";
 
+/**
+ * A Banner component that displays a highlighted content on a page. 
+ * This is the large preview of a movie or tv show displayed at the top of the home page, for example.
+ * The background is an image from the show. The foreground contains the title, a play button, a more info button, and a short description.
+ * 
+ * @component
+ * @param {Object} props - The component accepts a single prop: type
+ * @param {string} props.type - The type of highlighted content to use. The value can be "movies" or "series" to indicate trending movies and netflix series, respectively. Any other value will default to netflix movies.
+ * @returns {JSX.Element} The rendered Banner component
+ * 
+ * @example
+ * <Banner type='movies' />
+ */
 const Banner = ({ type }) => {
 	let selector;
 	switch (type) {
@@ -34,10 +51,16 @@ const Banner = ({ type }) => {
 	const description = truncate(finalData?.overview, 150);
 	const dispatch = useDispatch();
 
+  // A handler function for clicking the play button, which plays an animation.
+  // This calls the stopPropagation() method to prevent the click event from propagating up the node tree.
+  // There is no logic for playing videos since FakeFlix is not intended to do so.
 	const handlePlayAnimation = event => {
 		event.stopPropagation();
 	};
 
+  // A handler function for clicking the "More info" button, which displays a modal.
+  // This makes a dispatch call to set the modal data in redux, which triggers an update in DetailModal.
+  // The data sent is of the highlighted content being displayed.
 	const handleModalOpening = () => {
 		dispatch(showModalDetail({ ...finalData, fallbackTitle }));
 	}
