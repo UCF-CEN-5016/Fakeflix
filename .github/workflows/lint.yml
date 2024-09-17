@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      documentation-branch
   pull_request:
 jobs:
   build:
