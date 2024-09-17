@@ -1,3 +1,6 @@
+// This file defines the authReducer function, which handles authentication-related actions 
+// in the application. It manages the state for user authentication, including sign-in, sign-up, 
+// and sign-out processes, as well as loading and error states.
 import { authActionTypes } from "./auth.types"
 
 
