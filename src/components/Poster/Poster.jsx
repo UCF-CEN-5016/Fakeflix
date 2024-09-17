@@ -53,6 +53,7 @@ const Poster = result => {
             className='Poster'
             onClick={handleModalOpening}
         >
+            {/* showing poster image of move/tvseries */}
             {backdrop_path ? (
                 <img src={`${BASE_IMG_URL}/${backdrop_path}`} alt={fallbackTitle} />
             ) : (
@@ -65,6 +66,7 @@ const Poster = result => {
             )}
             <div className="Poster__info">
                 <div className="Poster__info--iconswrp">
+                    {/* Link to Play the tv-series/movie */}
                     <Link
                         className="Poster__info--icon icon--play"
                         onClick={handlePlayAction}
@@ -72,6 +74,7 @@ const Poster = result => {
                     >
                         <FaPlay />
                     </Link>
+                    {/* adding favourites and also removing from favourite list */}
                     {!isFavourite
                         ? (
                             <button className='Poster__info--icon icon--favourite' onClick={handleAdd}>
@@ -89,6 +92,7 @@ const Poster = result => {
                 <div className="Poster__info--title">
                     <h3>{fallbackTitle}</h3>
                 </div>
+                {/* showing genere names of movie/tvseries */}
                 <div className="Poster__info--genres">
                     {genresConverted && genresConverted.map(genre => (
                         <span key={`Genre--id_${genre}`} className="genre-title">{genre}</span>
