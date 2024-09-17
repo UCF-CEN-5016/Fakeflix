@@ -8,26 +8,41 @@ import { showModalDetail } from "../../redux/modal/modal.actions";
 import { useDispatch } from "react-redux";
 import { addToFavourites, removeFromFavourites } from "../../redux/favourites/favourites.actions";
 import { Link } from "react-router-dom";
-
+// Functional Component `Poster` takes movie or TV-series details as parameters
+// @param result contains the details of the item
 const Poster = result => {
+
+    // Destructuring result to get item and isFavourite, and extracting movie/series details from item
     const { item, item: { title, original_name, original_title, name, genre_ids, backdrop_path }, isFavourite } = result;
+    
+    //sets fallBackTitle  from title,original_title, name or original name
     let fallbackTitle = title || original_title || name || original_name;
+
+    //Using custom hook to convert genre_names from genre_ids
     const genresConverted = useGenreConversion(genre_ids);
+    // Calling the useDispatch hook to get the dispatch function 
     const dispatch = useDispatch();
 
+    // Handles the response when adding to favourite movie list
+    // Adds the movie item to favorites by dispatching a Redux action
     const handleAdd = event => {
-        event.stopPropagation();
+        event.stopPropagation(); // Stops the event from affecting parent elements
         dispatch(addToFavourites({ ...item, isFavourite }));
     };
+
+    // Handles the response when removing favourite movie list
+    // removes the movie item from favorites by dispatching a Redux action
     const handleRemove = event => {
-        event.stopPropagation();
+        event.stopPropagation(); // Stops the event from affecting parent elements
         dispatch(removeFromFavourites({ ...item, isFavourite }));
     };
 
+    // Handles opening the modal to display movie/TV-series details
     const handleModalOpening = () => {
         dispatch(showModalDetail({ ...item, fallbackTitle, genresConverted, isFavourite }));
     }
 
+    // Prevents event propagation when the play action is triggered
     const handlePlayAction = event => {
         event.stopPropagation();
     };
