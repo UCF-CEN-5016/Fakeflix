@@ -1,3 +1,18 @@
+/**
+ * Poster Component
+ * 
+ * The `Poster` component is responsible for displaying movie or TV-series details, 
+ * including the title, genre, and a backdrop image. 
+ * It provides functionality to add or remove items from the favorites list, 
+ * open a modal with detailed information, and handle play action.
+ * 
+ * Key Functionalities:
+ * - Displays the movie or TV-series image and fallback if not available.
+ * - Adds or removes the item from the favorites list.
+ * - Opens a modal for detailed information.
+ * - Handles event propagation for UI actions.
+ */
+
 import "./poster.scss"
 import { motion } from "framer-motion";
 import { posterFadeInVariants } from "../../motionUtils";
