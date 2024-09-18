@@ -1,10 +1,10 @@
 name: Test Node.js application
 on:
-  merge_group:
-  pull_request:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      documentation-branch
+  pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
