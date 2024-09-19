@@ -1,3 +1,11 @@
+/*
+The overall purpose of the file is to source and house information from current movie demographics
+in order to replicate the home user interface of Netflix. This includes information about trending movies, 
+search inquiries, popular animation and action films, and much more.Without this file, Fakeflix would still
+have a similar user interface comparable to Netflix, however, much of the info cards would be either void 
+or be without any substantial data. 
+*/
+
 import { getOneMonthAgoReleaseDate } from "./utils";
 
 export const GITHUB_BASE_URL = "https://github.com/Th3Wall";
@@ -16,10 +24,23 @@ const ONEMONTHAGO = getOneMonthAgoReleaseDate();
 const { REACT_APP_API_KEY } = process.env;
 
 const requests = {
+
+	/*
+ 	This declarative function/constant establishes queries for the various pages embedded inside FakeFlix.
+  	With the use of API calls, "requests" is able to pull in data from across the internet and its local API key.
+   	This data would soon be displayed across the webpage. This also aids in code legibility; without this constant, 
+    	the declarations across this repository would be replaced with complex URLs, providing much more of a need for 
+     	developer comments. 
+ 	*/
+	
 	fetchSearchQuery: `/search/multi?api_key=${REACT_APP_API_KEY}&language=${LANG}&query=`,
 	fetchTrendingAll: `/trending/all/week?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&language=${LANG}`,
 	fetchReleasedMoviesByOneMonth: `/discover/movie?api_key=${REACT_APP_API_KEY}&primary_release_date.gte=${ONEMONTHAGO}&sort_by=popularity.desc&language=${LANG}`,
-    // Movies
+    
+	/*
+ 	Movies: Houses fetched data via API calls about trending movie genres, such Action, Horror, and Romance. The
+  		information for each of these films will be presented in the layout designed in the components folder
+  	*/
 	fetchTrendingMovies: `/trending/movie/week?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&language=${LANG}`,
 	fetchUpcomingMovies: `/movie/upcoming?api_key=${REACT_APP_API_KEY}&language=${LANG}`,
 	fetchTopRated: `/movie/top_rated?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&region=${REGION}`,
@@ -31,7 +52,12 @@ const requests = {
 	fetchWarMovies: `/discover/movie?api_key=${REACT_APP_API_KEY}&with_genres=10752&sort_by=popularity.desc&language=${LANG}`,
 	fetchAnimationMovies: `/discover/movie?api_key=${REACT_APP_API_KEY}&with_genres=16&sort_by=popularity.desc&language=${LANG}`,
 	discoverMovies: `/discover/movie?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&language=${LANG}`,
-    // Series
+    
+	/* 
+ 	Series: Houses fetched data via API calls about trending serial genres, such Documentaries, Crime, and Comedy. The
+  		information for each of these films will be presented in the layout designed in the components folder.
+  	*/
+	
 	discoverSeries: `/discover/tv?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&language=${LANG}`,
 	fetchTrendingSeries: `/trending/tv/week?api_key=${REACT_APP_API_KEY}&sort_by=popularity.desc&language=${LANG}`,
 	fetchNetflixOriginals: `/discover/tv?api_key=${REACT_APP_API_KEY}&with_networks=213&sort_by=popularity.desc&language=${LANG}`,
