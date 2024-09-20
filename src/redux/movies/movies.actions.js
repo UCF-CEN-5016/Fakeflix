@@ -1,11 +1,24 @@
 import axios from "../../axiosInstance";
 import { moviesActionTypes } from "./movies.types";
 
-// Action
+/* 
+* This file contains creators for all of the Redux actions related to 
+* fetching movies from the database. In Redux, actions describe events that occur
+* in the application. Actions always have a type field, which should be a 
+* string that clearly communicates what the event is; additional fields contain data
+* relevant to the event. Actions are used by reducers to change the state of the application.
+*/
+
+// Creator for action that signals that a request to fetch action movies has been sent 
 export const fetchActionMoviesRequest = () => ({
 	type: moviesActionTypes.FETCH_ACTION_MOVIES_REQUEST,
 });
 
+/* 
+* Creator for action that signals that a request to fetch action movies has succeeded;
+* contains the fetched data and whether or not the data should be displayed as its own
+* page or should be added to the page already being displayed.
+*/
 export const fetchActionMoviesSuccess = (actionMovies, isPage) => ({
 	type: isPage
 		? moviesActionTypes.FETCH_ACTION_MOVIES_SUCCESS
@@ -13,6 +26,10 @@ export const fetchActionMoviesSuccess = (actionMovies, isPage) => ({
 	payload: actionMovies,
 });
 
+/* 
+* Creator for action that signals that a request to fetch action movies has been failed;
+* contains data related to the error that caused the failure
+*/
 export const fetchActionMoviesFailure = error => ({
 	type: moviesActionTypes.FETCH_ACTION_MOVIES_FAILURE,
 	payload: error,
