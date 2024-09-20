@@ -3,12 +3,30 @@ import { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { TADUM_SOUND_URL } from "../../requests";
 import { motion } from "framer-motion";
+/**
+ * SplashAnimation.jsx
+ * 
+ * This component displays a splash screen animation for the FakeFlix application.
+ * 
+ * The animation consists of a series of animated elements (that together create the letter "F")
+ * and a Tandum (Netfix) sound effect that plays soon after the page loads. After the animation
+ * completes, the user is redirected to the "browse" route.
+ * 
+ * This component makes use of framer-motion and varios effects detailed in splashAnimation.scss.
+ * 
+ */
 
+// Function to create an animated splash screen
+// Uses hooks to time animation, sound notifcation, and redirecting to browse page
 const SplashAnimation = () => {
 
 	let history = useHistory();
 	const soundRef = useRef(null);
 
+	// Function to play Tandum (Netflix) sound notification asynchronously
+		// Creates Tandum audio object = "sound"
+		// Plays sound asynchronously - returning promise object
+		// Checks promise object for playback error - prints error to console if it exists
 	const soundNotification = () => {
 		const sound = new Audio(TADUM_SOUND_URL);
 		const promise = sound.play();
@@ -18,6 +36,8 @@ const SplashAnimation = () => {
 		}
 	}
 
+	// Function to play timed effects - Tandum sound and navigation to browse
+	// page - 200 ms and 5.7 s after the splash screen loads respectively
 	useEffect(() => {
 		setTimeout(() => {
 			soundNotification();
