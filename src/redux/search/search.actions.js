@@ -7,10 +7,6 @@ import requests from "../../requests";
 	
 	These actions are dispatched by the search bar component (/src/components/Searchbar/Searchbar.jsx)
 	and are handled by the search reducer (/src/redux/search/index.js)
-	
-	Each action is a function that returns two properties:
-		Type - An enum value representing the search action
-		Payload - The data required to take the action
 */
 
 /**
