@@ -1,3 +1,10 @@
+/*
+    This component renders the list of favorite items of the user.
+    Uses useSelector hook to extract the favorite list from the redux store.
+    Uses the Poster and Credit components to display each item and credits.
+    Uses framer-motion and motionUtils for animations.
+*/
+
 import "./myList.scss"
 import Poster from "../../components/Poster/Poster";
 import Credits from "../../components/Credits/Credits";
